@@ -10,8 +10,15 @@ const cadastrar = async () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ usuario, email, senha }),
     });
+
     const dados = await res.json();
     msg.innerText = dados.message;
+
+    if (dados.success) {
+      setTimeout(() => {
+        window.location.href = "./login.html";
+      }, 1000);
+    }
   } catch (erro) {
     msg.innerText = "Erro ao conectar";
   }
