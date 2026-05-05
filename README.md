@@ -1,161 +1,229 @@
-# FakeLogin
+﻿# LoginFlow
 
-Full stack study project focused on basic authentication, frontend-backend integration, HTTP routes, API consumption, and database connection.
+LoginFlow é um projeto prático de desenvolvimento web focado em cadastro e login de usuários. Ele integra front-end, back-end e banco de dados para simular um fluxo básico de autenticação usando uma API própria.
 
-## Objective
+O projeto foi criado como estudo, mas com atenção à organização, persistência de dados, validações essenciais e proteção de senha com bcrypt.
 
-This project was created to practice fundamental web development concepts by simulating a real user registration and login flow.
+## Objetivo do Projeto
 
-The main goal is to improve practical skills in:
+O objetivo do LoginFlow é praticar conceitos fundamentais de uma aplicação web full-stack, incluindo:
 
-- HTML
-- CSS
-- JavaScript
-- DOM
-- Fetch API
-- Node.js
-- Express
-- MySQL
-- Git and GitHub
+- fluxo de cadastro e login;
+- integração entre front-end, back-end e banco de dados;
+- consumo de API própria com `fetch`;
+- criação de rotas com Express;
+- validação de dados no front-end e no back-end;
+- persistência de usuários com MySQL;
+- proteção de senha com hash usando bcrypt.
 
-## Features
+## Tecnologias Utilizadas
 
-- User registration
-- User login
-- Frontend form validation
-- Sending data to the backend
-- `POST` routes for registration and login
-- Database integration
-- Success and error messages
-- Redirect after login
-
-## Technologies Used
-
-### Frontend
 - HTML5
 - CSS3
 - JavaScript
-
-### Backend
 - Node.js
 - Express
-
-### Database
 - MySQL
+- bcrypt
+- CORS
+- Git e GitHub
 
-## Project Structure
+## Funcionalidades
+
+- Cadastro de usuário.
+- Login de usuário.
+- Validação de campos obrigatórios.
+- Validação simples de formato de e-mail no front-end.
+- Verificação de e-mail já cadastrado no back-end.
+- Hash de senha com bcrypt antes de salvar no banco.
+- Comparação de senha com bcrypt no login.
+- Integração do front-end com o back-end via `fetch`.
+- Respostas em JSON para cadastro e login.
+- Armazenamento dos usuários no MySQL.
+- Servimento dos arquivos estáticos do front-end pelo Express.
+
+## Estrutura do Projeto
+
+```text
+LoginFlow/
++-- BackEnd/
+|   +-- controllers/
+|   |   +-- authController.js
+|   +-- database/
+|   |   +-- schema.sql
+|   +-- db/
+|   |   +-- connection.js
+|   +-- routes/
+|   |   +-- authRoutes.js
+|   +-- server.js
++-- FrontEnd/
+|   +-- pages/
+|   |   +-- cadastro.html
+|   |   +-- home.html
+|   |   +-- index.html
+|   |   +-- login.html
+|   |   +-- perfil.html
+|   +-- scripts/
+|   |   +-- cadastro.js
+|   |   +-- exercicios.js
+|   |   +-- login.js
+|   |   +-- perfil.js
+|   +-- styles/
+|       +-- styles.css
++-- package.json
++-- package-lock.json
+```
+
+### Principais Arquivos
+
+- `BackEnd/server.js`: inicializa o servidor Express, configura CORS, JSON e arquivos estáticos.
+- `BackEnd/routes/authRoutes.js`: contém as rotas de cadastro e login.
+- `BackEnd/db/connection.js`: configura a conexão com o MySQL.
+- `BackEnd/database/schema.sql`: script SQL para criar o banco e a tabela de usuários.
+- `FrontEnd/pages`: páginas HTML da aplicação.
+- `FrontEnd/scripts`: scripts responsáveis por capturar dados do formulário e consumir a API.
+- `FrontEnd/styles/styles.css`: estilos da interface.
+
+## Como Rodar o Projeto Localmente
+
+### 1. Clonar o repositório
 
 ```bash
-FakeLogin/
-├── FrontEnd/
-│   ├── pages/
-│   │   ├── login.html
-│   │   ├── cadastro.html
-│   │   └── home.html
-│   ├── scripts/
-│   │   ├── login.js
-│   │   └── cadastro.js
-│   └── styles/
-│       └── style.css
-├── BackEnd/
-│   ├── server.js
-│   ├── routers/
-│   └── ...
-├── package.json
-└── README.md
-How It Works
+git clone <url-do-repositorio>
+```
 
-This project simulates a simple authentication flow:
+### 2. Entrar na pasta do projeto
 
-The user fills in the registration or login form on the frontend
-JavaScript captures the input data
-The data is sent to the backend using fetch
-The backend receives the request
-The backend validates the data
-The backend queries or stores the information in the database
-The system returns a response to the frontend
-The frontend displays the corresponding message to the user
-Concepts Practiced
+```bash
+cd LoginFlow
+```
 
-This project was built to reinforce important concepts such as:
+### 3. Instalar as dependências
 
-DOM manipulation
-Events
-Asynchronous functions with async/await
-HTTP requests
-Express routes
-Use of req.body
-Frontend and backend validation
-File organization
-Relational database integration
-Possible Future Improvements
-Password hashing with bcrypt
-JWT authentication
-Logout
-Route protection
-More complete email validation
-Better error handling
-UI improvements
-Responsiveness
-Code refactoring
-How to Run the Project
-1. Clone the repository
-git clone https://github.com/YOUR-USERNAME/FakeLogin.git
-2. Go to the project folder
-cd FakeLogin
-3. Install backend dependencies
+```bash
 npm install
-4. Configure the MySQL database
+```
 
-Create the database and the users table according to the structure used in the project.
+### 4. Configurar o banco MySQL
 
-Basic example:
+Crie o banco e a tabela usando o arquivo:
 
-CREATE DATABASE estudo;
+```text
+BackEnd/database/schema.sql
+```
 
-USE estudo;
+Você pode executar o script diretamente no MySQL Workbench, no terminal do MySQL ou em outra ferramenta de administração de banco.
 
-CREATE TABLE usuario (
+### 5. Configurar a conexão com o banco
+
+Edite o arquivo:
+
+```text
+BackEnd/db/connection.js
+```
+
+Configure os dados locais do seu MySQL, como `host`, `user`, `password` e `database`. Evite versionar senhas reais em projetos públicos; uma melhoria futura é mover esses dados para variáveis de ambiente.
+
+### 6. Iniciar o servidor
+
+O `package.json` atual não possui script `start`, então o servidor pode ser iniciado com:
+
+```bash
+node BackEnd/server.js
+```
+
+Por padrão, o servidor roda em:
+
+```text
+http://localhost:3002
+```
+
+### 7. Abrir o front-end no navegador
+
+Com o servidor rodando, acesse uma das páginas do front-end:
+
+```text
+http://localhost:3002/pages/cadastro.html
+```
+
+ou
+
+```text
+http://localhost:3002/pages/login.html
+```
+
+## Banco de Dados
+
+O projeto usa MySQL para armazenar os usuários cadastrados.
+
+O script principal está em:
+
+```text
+BackEnd/database/schema.sql
+```
+
+### Tabela `usuarios`
+
+Colunas identificadas no projeto:
+
+- `id`: identificador único do usuário.
+- `usuario`: nome de usuário informado no cadastro.
+- `email`: e-mail do usuário, com restrição de valor único.
+- `senha`: senha protegida com hash bcrypt.
+- `created_at`: data e horário de criação do registro.
+
+### Script SQL
+
+```sql
+CREATE DATABASE IF NOT EXISTS loginflow;
+USE loginflow;
+
+CREATE TABLE IF NOT EXISTS usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
-  senha VARCHAR(100) NOT NULL
+  senha VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-5. Configure the database connection in the backend
+```
 
-In the server file, update:
+## Fluxo da Aplicação
 
-host
-user
-password
-database
-6. Start the server
-node server.js
+No cadastro, o usuário preenche os campos de nome, e-mail e senha. O front-end captura os dados do formulário e envia uma requisição `POST` para a rota `/cadastro` do back-end.
 
-or, if you are using nodemon:
+O back-end valida se os campos obrigatórios foram enviados, verifica se o e-mail já existe no banco, gera um hash da senha com bcrypt e salva o usuário na tabela `usuarios` do MySQL. Ao final, retorna uma resposta JSON para o front-end.
 
-npx nodemon server.js
-7. Open the frontend in the browser
+No login, o front-end envia e-mail e senha para a rota `/login`. O back-end busca o usuário pelo e-mail, compara a senha informada com o hash salvo usando `bcrypt.compare` e retorna uma resposta JSON indicando sucesso ou erro. O front-end exibe a mensagem recebida e, em caso de sucesso, redireciona o usuário para a página `home.html`.
 
-Open the HTML file in the browser or run the project using a local server.
+## Aprendizados
 
-I usually use Live Server for this step.
+- Criação de servidor com Express.
+- Criação e organização de rotas.
+- Integração com banco de dados MySQL.
+- Manipulação do DOM com JavaScript.
+- Consumo de API própria com `fetch`.
+- Validação de dados no front-end e no back-end.
+- Fluxo básico de autenticação.
+- Segurança básica com hash de senha usando bcrypt.
+- Organização inicial de um projeto full-stack.
 
-What I Learned From This Project
+## Melhorias Futuras
 
-During the development of this project, I practiced important concepts for a junior developer foundation, such as:
+- Implementar JWT para autenticação.
+- Usar variáveis de ambiente com `.env`.
+- Criar uma arquitetura em camadas com controllers, services e repositories.
+- Melhorar as validações de entrada.
+- Retornar mensagens de erro com status HTTP apropriados.
+- Criar scripts no `package.json`, como `start` e `dev`.
+- Fazer deploy do front-end e do back-end.
+- Adicionar testes automatizados.
+- Melhorar a interface visual.
+- Remover credenciais fixas do arquivo de conexão e usar configuração segura por ambiente.
 
-Frontend-backend communication
-Route structure
-Sending and receiving JSON data
-Form validation
-Database integration
-Project folder organization
-Basic authentication flow
-Project Status
+## Autor
 
-Project in progress for study purposes.
+Desenvolvido por Guilherme Faccioli Crescencio
 
-Author
+LinkedIn: [linkedin.com/in/guilherme-faccioli-b8a46611a](https://linkedin.com/in/guilherme-faccioli-b8a46611a)
 
-Developed by Guilherme Faccioli as a web development learning project.
+GitHub: [github.com/GuiFaccioli](https://github.com/GuiFaccioli)
