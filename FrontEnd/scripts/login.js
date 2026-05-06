@@ -1,7 +1,7 @@
 const BACKEND = "http://localhost:3002";
 
 const logar = async () => {
-  const email = document.getElementById("usuarioDigitado").value;
+  const email = document.getElementById("usuarioDigitado").value.trim();
   const senha = document.getElementById("senhaDigitada").value;
   const msg = document.getElementById("mensagemLogin");
 
@@ -12,6 +12,7 @@ const logar = async () => {
 
   if (!email.includes("@")) {
     msg.innerText = "Preencha um email válido.";
+    return;
   }
 
   try {
@@ -31,9 +32,11 @@ const logar = async () => {
     msg.innerText = dados.message;
 
     if (dados.success) {
+      localStorage.setItem("flowlogin:user", JSON.stringify(dados.user));
+
       setTimeout(() => {
         window.location.href = "home.html";
-      }, 1500);
+      }, 900);
     }
   } catch (erro) {
     console.error("Fetch error:", erro);
@@ -41,4 +44,6 @@ const logar = async () => {
   }
 };
 
-console.log("mudança teste");
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("botaoLogin").addEventListener("click", logar);
+});
