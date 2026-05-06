@@ -1,12 +1,12 @@
-﻿# LoginFlow
+﻿# FlowLogin
 
-LoginFlow é um projeto prático de desenvolvimento web focado em cadastro e login de usuários. Ele integra front-end, back-end e banco de dados para simular um fluxo básico de autenticação usando uma API própria.
+FlowLogin é um projeto prático de desenvolvimento web focado em cadastro e login de usuários. Ele integra front-end, back-end e banco de dados para simular um fluxo básico de autenticação usando uma API própria.
 
 O projeto foi criado como estudo, mas com atenção à organização, persistência de dados, validações essenciais e proteção de senha com bcrypt.
 
 ## Objetivo do Projeto
 
-O objetivo do LoginFlow é praticar conceitos fundamentais de uma aplicação web full-stack, incluindo:
+O objetivo do FlowLogin é praticar conceitos fundamentais de uma aplicação web full-stack, incluindo:
 
 - fluxo de cadastro e login;
 - integração entre front-end, back-end e banco de dados;
@@ -45,7 +45,7 @@ O objetivo do LoginFlow é praticar conceitos fundamentais de uma aplicação we
 ## Estrutura do Projeto
 
 ```text
-LoginFlow/
+FlowLogin/
 +-- BackEnd/
 |   +-- controllers/
 |   |   +-- authController.js
@@ -95,7 +95,7 @@ git clone <url-do-repositorio>
 ### 2. Entrar na pasta do projeto
 
 ```bash
-cd LoginFlow
+cd FlowLogin
 ```
 
 ### 3. Instalar as dependências
@@ -175,8 +175,8 @@ Colunas identificadas no projeto:
 ### Script SQL
 
 ```sql
-CREATE DATABASE IF NOT EXISTS loginflow;
-USE loginflow;
+CREATE DATABASE IF NOT EXISTS flowlogin;
+USE flowlogin;
 
 CREATE TABLE IF NOT EXISTS usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,

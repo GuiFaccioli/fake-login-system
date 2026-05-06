@@ -1,6 +1,6 @@
--- Create database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS loginflow;
-USE loginflow;
+﻿-- Create database if it doesn't exist
+CREATE DATABASE IF NOT EXISTS flowlogin;
+USE flowlogin;
 
 -- Create usuarios table
 CREATE TABLE IF NOT EXISTS usuarios (

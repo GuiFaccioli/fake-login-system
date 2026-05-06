@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "X1x2x3x4-",
-  database: "loginflow",
+  database: "flowlogin",
 });
 
 connection.connect((err) => {
