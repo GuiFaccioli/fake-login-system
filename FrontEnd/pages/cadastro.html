@@ -1,32 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FakeCadastro</title>
-    
-    <link rel="stylesheet" href="../styles/styles.css">
-<script defer src="../scripts/cadastro.js"></script>
-</head>
-<body>
-  <div class="login">
-  <h1>fakeCadastro</h1>
-  <input type="text" class="usuario" placeholder="Nome de usuário" id="usuarioCadastrado">
-  <input type="email" class="usuario" placeholder="Email" id="emailCadastrado" >
-  <input type="password" class="senha" placeholder="Senha" id="senhaCadastrada">
-  <button onclick="cadastrar()">Cadastrar</button>
-  
-  <p id="mensagemCadastro" class="mensagemCadastro"></p>
-</div>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowLogin | Cadastro</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <script defer src="../scripts/cadastro.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-panel">
+        <p class="eyebrow">FlowLogin</p>
+        <h1>Crie uma conta para explorar o fluxo completo</h1>
+        <p>
+          Cadastre um usuário, salve no MySQL e veja o back-end aplicar hash de
+          senha antes da persistência.
+        </p>
+      </section>
 
+      <section class="auth-card">
+        <div class="card-header">
+          <p class="eyebrow">Cadastro</p>
+          <h2>Comece por aqui</h2>
+        </div>
 
-<button class="botoesMenores">Esqueci minha senha</button>
-  <button class="botoesMenores" onclick="window.location.href='./login.html'">
-  Já tenho cadastro, fazer login
-</button>
+        <div class="form-stack">
+          <label>
+            Nome
+            <input
+              type="text"
+              class="usuario"
+              placeholder="Nome de usuário"
+              id="usuarioCadastrado"
+            />
+          </label>
 
- 
-</div>
+          <label>
+            Email
+            <input
+              type="email"
+              class="usuario"
+              placeholder="seu@email.com"
+              id="emailCadastrado"
+            />
+          </label>
 
-</body>
+          <label>
+            Senha
+            <input
+              type="password"
+              class="senha"
+              placeholder="Crie uma senha"
+              id="senhaCadastrada"
+            />
+          </label>
+
+          <button type="button" id="botaoCadastro">Cadastrar</button>
+          <p id="mensagemCadastro" class="message"></p>
+        </div>
+
+        <div class="inline-link">
+          Já tenho cadastro.
+          <a href="./login.html">Fazer login</a>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
