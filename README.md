@@ -170,7 +170,6 @@ Colunas identificadas no projeto:
 - `usuario`: nome de usuário informado no cadastro.
 - `email`: e-mail do usuário, com restrição de valor único.
 - `senha`: senha protegida com hash bcrypt.
-- `created_at`: data e horário de criação do registro.
 
 ### Script SQL
 
@@ -182,8 +181,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  senha VARCHAR(255) NOT NULL
 );
 ```
 
