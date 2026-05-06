@@ -1,29 +1,59 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlowLogin</title>
-    <link rel="stylesheet" href="/FrontEnd/styles/styles.css" />
-    <script defer src="/FrontEnd/scripts/login.js"></script>
+    <title>FlowLogin | Login</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <script defer src="../scripts/login.js"></script>
   </head>
   <body>
-    <div class="login">
-      <h1>fakeLogin</h1>
-      <input
-        type="email"
-        class="usuario"
-        placeholder="Usuário"
-        id="usuarioDigitado"
-      />
-      <input
-        type="password"
-        class="senha"
-        id="senhaDigitada"
-        placeholder="Senha"
-      />
-      <button onclick="logar()">Login</button>
-      <p id="mensagemLogin" class="mensagemLogin"></p>
-    </div>
+    <main class="app-shell">
+      <section class="hero-panel">
+        <p class="eyebrow">FlowLogin</p>
+        <h1>Acesso simples para praticar autenticação real</h1>
+        <p>
+          Um fluxo full-stack para estudar login, API própria, MySQL e senhas
+          protegidas com bcrypt.
+        </p>
+      </section>
+
+      <section class="auth-card">
+        <div class="card-header">
+          <p class="eyebrow">Entrar</p>
+          <h2>Bem-vindo de volta</h2>
+        </div>
+
+        <div class="form-stack">
+          <label>
+            Email
+            <input
+              type="email"
+              class="usuario"
+              placeholder="seu@email.com"
+              id="usuarioDigitado"
+            />
+          </label>
+
+          <label>
+            Senha
+            <input
+              type="password"
+              class="senha"
+              id="senhaDigitada"
+              placeholder="Sua senha"
+            />
+          </label>
+
+          <button type="button" id="botaoLogin">Entrar</button>
+          <p id="mensagemLogin" class="message"></p>
+        </div>
+
+        <div class="inline-link">
+          Ainda não tem conta?
+          <a href="./cadastro.html">Criar cadastro</a>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
