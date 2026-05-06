@@ -1,19 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LOGOU!</title>
+    <title>FlowLogin | Home</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
-    <h1>fakeLogin</h1>
+    <main class="home-layout">
+      <nav class="topbar">
+        <strong>FlowLogin</strong>
+        <div>
+          <a href="./perfil.html">Perfil</a>
+          <a href="./cadastro.html">Cadastro</a>
+          <a href="./login.html">Login</a>
+        </div>
+      </nav>
 
-    <div>
-      <button onclick="window.location.href = './perfil.html'">Perfil</button>
-      <button onclick="window.location.href = './cadastro.html'">
-        Cadastro
-      </button>
-      <button onclick="window.location.href = './login.html'">Login</button>
-    </div>
+      <section class="home-hero">
+        <p class="eyebrow">Painel inicial</p>
+        <h1>Login realizado com sucesso</h1>
+        <p>
+          Acesse seu perfil para alterar informações da conta ou excluir seu
+          usuário do banco de dados.
+        </p>
+        <a class="button-link" href="./perfil.html">Abrir perfil</a>
+      </section>
+    </main>
   </body>
 </html>
