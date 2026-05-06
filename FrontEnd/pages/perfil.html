@@ -1,22 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <script src="/FrontEnd/scripts/perfil.js" defer></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowLogin | Perfil</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <script src="../scripts/perfil.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-panel">
+        <p class="eyebrow">Conta segura</p>
+        <h1 id="nomeUsuario">Perfil</h1>
+        <p>
+          Gerencie seus dados de acesso com uma experiência simples, clara e
+          protegida por bcrypt.
+        </p>
 
+        <div class="quick-stats">
+          <span>ID do usuário</span>
+          <strong id="idPerfil">-</strong>
+        </div>
+      </section>
 
-    <h1 id="nomeUsuario">Nome do usuário:</h1>
-    <button>Editar nome</button>
-    <h2>Id do usuário:</h2>
-    <button>Editar ID</button>
-    <h2>email:</h2>
-    <button>Alterar email</button>
-    <h2>senha:</h2>
-    <button>Alterar senha</button>
-</body>
+      <section class="auth-card profile-card">
+        <div class="card-header">
+          <p class="eyebrow">Meu perfil</p>
+          <h2>Editar informações</h2>
+        </div>
+
+        <form id="perfilForm" class="form-stack">
+          <label>
+            Nome
+            <input type="text" id="usuarioPerfil" placeholder="Seu nome" />
+          </label>
+
+          <label>
+            Email
+            <input type="email" id="emailPerfil" placeholder="seu@email.com" />
+          </label>
+
+          <label>
+            Nova senha
+            <input
+              type="password"
+              id="senhaPerfil"
+              placeholder="Deixe em branco para manter"
+            />
+          </label>
+
+          <button type="submit">Salvar alterações</button>
+        </form>
+
+        <p id="mensagemPerfil" class="message"></p>
+
+        <div class="actions-row">
+          <button type="button" class="button-secondary" id="sairConta">
+            Sair
+          </button>
+          <button type="button" class="button-danger" id="excluirConta">
+            Excluir conta
+          </button>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
