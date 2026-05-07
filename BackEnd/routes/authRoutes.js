@@ -3,8 +3,10 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const connection = require("../db/connection");
 
+// Quantidade de rodadas usadas pelo bcrypt para gerar o hash da senha.
 const SALT_ROUNDS = 10;
 
+// Cadastro: valida os dados, impede email duplicado e salva a senha como hash.
 router.post("/cadastro", (req, res) => {
   const { usuario, email, senha } = req.body;
 
@@ -21,12 +23,13 @@ router.post("/cadastro", (req, res) => {
       }
 
       if (results.length > 0) {
-        return res.json({ success: false, message: "Email ja cadastrado" });
+        return res.json({ success: false, message: "Email já cadastrado" });
       }
 
       let senhaHash;
 
       try {
+        // Nunca salvamos a senha pura no banco; salvamos apenas o hash.
         senhaHash = await bcrypt.hash(senha, SALT_ROUNDS);
       } catch (error) {
         return res.json({ success: false, message: "Erro ao cadastrar" });
@@ -52,6 +55,7 @@ router.post("/cadastro", (req, res) => {
   );
 });
 
+// Login: busca o usuario pelo email e compara a senha digitada com o hash salvo.
 router.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
@@ -79,6 +83,7 @@ router.post("/login", (req, res) => {
       let senhaCorreta;
 
       try {
+        // bcrypt.compare retorna true quando a senha digitada corresponde ao hash.
         senhaCorreta = await bcrypt.compare(senha, senhaSalva);
       } catch (error) {
         return res.json({ success: false, message: "Erro ao fazer login" });
@@ -91,6 +96,7 @@ router.post("/login", (req, res) => {
         });
       }
 
+      // Remove a senha da resposta para nao expor nem mesmo o hash ao front-end.
       delete user.senha;
 
       res.json({
@@ -102,6 +108,7 @@ router.post("/login", (req, res) => {
   );
 });
 
+// Perfil: retorna dados publicos do usuario logado.
 router.get("/usuarios/:id", (req, res) => {
   const { id } = req.params;
 
@@ -125,6 +132,7 @@ router.get("/usuarios/:id", (req, res) => {
   );
 });
 
+// Atualizacao de perfil: altera nome/email e, se enviada, atualiza a senha.
 router.put("/usuarios/:id", (req, res) => {
   const { id } = req.params;
   const { usuario, email, senha } = req.body;
@@ -142,13 +150,14 @@ router.put("/usuarios/:id", (req, res) => {
       }
 
       if (results.length > 0) {
-        return res.json({ success: false, message: "Email ja cadastrado" });
+        return res.json({ success: false, message: "Email já cadastrado" });
       }
 
       if (senha) {
         let senhaHash;
 
         try {
+          // Ao trocar a senha, geramos um novo hash antes de atualizar no banco.
           senhaHash = await bcrypt.hash(senha, SALT_ROUNDS);
         } catch (error) {
           return res.json({ success: false, message: "Erro ao atualizar usuário" });
@@ -200,6 +209,7 @@ router.put("/usuarios/:id", (req, res) => {
   );
 });
 
+// Exclusao de conta: remove o usuario pelo id recebido na URL.
 router.delete("/usuarios/:id", (req, res) => {
   const { id } = req.params;
 

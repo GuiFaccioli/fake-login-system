@@ -1,22 +1,22 @@
-﻿# FlowLogin
+# FlowLogin
 
-FlowLogin é um projeto prático de desenvolvimento web focado em cadastro e login de usuários. Ele integra front-end, back-end e banco de dados para simular um fluxo básico de autenticação usando uma API própria.
+FlowLogin is a practical web development project focused on user registration and login. It integrates front end, back end, and database layers to simulate a basic authentication flow using a custom API.
 
-O projeto foi criado como estudo, mas com atenção à organização, persistência de dados, validações essenciais e proteção de senha com bcrypt.
+The project was created for learning purposes, with attention to organization, data persistence, essential validations, and password protection with bcrypt.
 
-## Objetivo do Projeto
+## Project Goal
 
-O objetivo do FlowLogin é praticar conceitos fundamentais de uma aplicação web full-stack, incluindo:
+FlowLogin was built to practice core concepts of a full-stack web application, including:
 
-- fluxo de cadastro e login;
-- integração entre front-end, back-end e banco de dados;
-- consumo de API própria com `fetch`;
-- criação de rotas com Express;
-- validação de dados no front-end e no back-end;
-- persistência de usuários com MySQL;
-- proteção de senha com hash usando bcrypt.
+- user registration and login flow;
+- integration between front end, back end, and database;
+- consuming a custom API with `fetch`;
+- creating routes with Express;
+- validating data on both the front end and back end;
+- persisting users with MySQL;
+- protecting passwords with bcrypt hashes.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - HTML5
 - CSS3
@@ -26,23 +26,23 @@ O objetivo do FlowLogin é praticar conceitos fundamentais de uma aplicação we
 - MySQL
 - bcrypt
 - CORS
-- Git e GitHub
+- Git and GitHub
 
-## Funcionalidades
+## Features
 
-- Cadastro de usuário.
-- Login de usuário.
-- Validação de campos obrigatórios.
-- Validação simples de formato de e-mail no front-end.
-- Verificação de e-mail já cadastrado no back-end.
-- Hash de senha com bcrypt antes de salvar no banco.
-- Comparação de senha com bcrypt no login.
-- Integração do front-end com o back-end via `fetch`.
-- Respostas em JSON para cadastro e login.
-- Armazenamento dos usuários no MySQL.
-- Servimento dos arquivos estáticos do front-end pelo Express.
+- User registration.
+- User login.
+- Required field validation.
+- Basic email format validation on the front end.
+- Duplicate email verification on the back end.
+- Password hashing with bcrypt before saving to the database.
+- Password comparison with bcrypt during login.
+- Front-end and back-end integration through `fetch`.
+- JSON responses for registration and login.
+- User storage in MySQL.
+- Static front-end file serving through Express.
 
-## Estrutura do Projeto
+## Project Structure
 
 ```text
 FlowLogin/
@@ -74,104 +74,104 @@ FlowLogin/
 +-- package-lock.json
 ```
 
-### Principais Arquivos
+### Main Files
 
-- `BackEnd/server.js`: inicializa o servidor Express, configura CORS, JSON e arquivos estáticos.
-- `BackEnd/routes/authRoutes.js`: contém as rotas de cadastro e login.
-- `BackEnd/db/connection.js`: configura a conexão com o MySQL.
-- `BackEnd/database/schema.sql`: script SQL para criar o banco e a tabela de usuários.
-- `FrontEnd/pages`: páginas HTML da aplicação.
-- `FrontEnd/scripts`: scripts responsáveis por capturar dados do formulário e consumir a API.
-- `FrontEnd/styles/styles.css`: estilos da interface.
+- `BackEnd/server.js`: starts the Express server and configures CORS, JSON parsing, and static files.
+- `BackEnd/routes/authRoutes.js`: contains the registration and login routes.
+- `BackEnd/db/connection.js`: configures the MySQL connection.
+- `BackEnd/database/schema.sql`: SQL script to create the database and users table.
+- `FrontEnd/pages`: HTML pages for the application.
+- `FrontEnd/scripts`: scripts responsible for collecting form data and consuming the API.
+- `FrontEnd/styles/styles.css`: interface styles.
 
-## Como Rodar o Projeto Localmente
+## How to Run the Project Locally
 
-### 1. Clonar o repositório
+### 1. Clone the repository
 
 ```bash
-git clone <url-do-repositorio>
+git clone <repository-url>
 ```
 
-### 2. Entrar na pasta do projeto
+### 2. Enter the project folder
 
 ```bash
 cd FlowLogin
 ```
 
-### 3. Instalar as dependências
+### 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Configurar o banco MySQL
+### 4. Configure the MySQL database
 
-Crie o banco e a tabela usando o arquivo:
+Create the database and table using this file:
 
 ```text
 BackEnd/database/schema.sql
 ```
 
-Você pode executar o script diretamente no MySQL Workbench, no terminal do MySQL ou em outra ferramenta de administração de banco.
+You can run the script directly in MySQL Workbench, the MySQL terminal, or another database administration tool.
 
-### 5. Configurar a conexão com o banco
+### 5. Configure the database connection
 
-Edite o arquivo:
+Edit this file:
 
 ```text
 BackEnd/db/connection.js
 ```
 
-Configure os dados locais do seu MySQL, como `host`, `user`, `password` e `database`. Evite versionar senhas reais em projetos públicos; uma melhoria futura é mover esses dados para variáveis de ambiente.
+Configure your local MySQL settings, such as `host`, `user`, `password`, and `database`. Avoid committing real passwords in public projects; a future improvement is to move these values to environment variables.
 
-### 6. Iniciar o servidor
+### 6. Start the server
 
-O `package.json` atual não possui script `start`, então o servidor pode ser iniciado com:
+The current `package.json` does not include a `start` script, so the server can be started with:
 
 ```bash
 node BackEnd/server.js
 ```
 
-Por padrão, o servidor roda em:
+By default, the server runs at:
 
 ```text
 http://localhost:3002
 ```
 
-### 7. Abrir o front-end no navegador
+### 7. Open the front end in the browser
 
-Com o servidor rodando, acesse uma das páginas do front-end:
+With the server running, access one of the front-end pages:
 
 ```text
 http://localhost:3002/pages/cadastro.html
 ```
 
-ou
+or
 
 ```text
 http://localhost:3002/pages/login.html
 ```
 
-## Banco de Dados
+## Database
 
-O projeto usa MySQL para armazenar os usuários cadastrados.
+The project uses MySQL to store registered users.
 
-O script principal está em:
+The main script is located at:
 
 ```text
 BackEnd/database/schema.sql
 ```
 
-### Tabela `usuarios`
+### `usuarios` Table
 
-Colunas identificadas no projeto:
+Columns identified in the project:
 
-- `id`: identificador único do usuário.
-- `usuario`: nome de usuário informado no cadastro.
-- `email`: e-mail do usuário, com restrição de valor único.
-- `senha`: senha protegida com hash bcrypt.
+- `id`: unique user identifier.
+- `usuario`: username provided during registration.
+- `email`: user email, with a unique value constraint.
+- `senha`: password protected with a bcrypt hash.
 
-### Script SQL
+### SQL Script
 
 ```sql
 CREATE DATABASE IF NOT EXISTS flowlogin;
@@ -185,42 +185,42 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 ```
 
-## Fluxo da Aplicação
+## Application Flow
 
-No cadastro, o usuário preenche os campos de nome, e-mail e senha. O front-end captura os dados do formulário e envia uma requisição `POST` para a rota `/cadastro` do back-end.
+During registration, the user fills in the name, email, and password fields. The front end collects the form data and sends a `POST` request to the back-end `/cadastro` route.
 
-O back-end valida se os campos obrigatórios foram enviados, verifica se o e-mail já existe no banco, gera um hash da senha com bcrypt e salva o usuário na tabela `usuarios` do MySQL. Ao final, retorna uma resposta JSON para o front-end.
+The back end validates the required fields, checks whether the email already exists in the database, generates a password hash with bcrypt, and saves the user in the MySQL `usuarios` table. Finally, it returns a JSON response to the front end.
 
-No login, o front-end envia e-mail e senha para a rota `/login`. O back-end busca o usuário pelo e-mail, compara a senha informada com o hash salvo usando `bcrypt.compare` e retorna uma resposta JSON indicando sucesso ou erro. O front-end exibe a mensagem recebida e, em caso de sucesso, redireciona o usuário para a página `home.html`.
+During login, the front end sends the email and password to the `/login` route. The back end searches for the user by email, compares the submitted password with the saved hash using `bcrypt.compare`, and returns a JSON response indicating success or error. The front end displays the received message and, on success, redirects the user to the `home.html` page.
 
-## Aprendizados
+## What I Learned
 
-- Criação de servidor com Express.
-- Criação e organização de rotas.
-- Integração com banco de dados MySQL.
-- Manipulação do DOM com JavaScript.
-- Consumo de API própria com `fetch`.
-- Validação de dados no front-end e no back-end.
-- Fluxo básico de autenticação.
-- Segurança básica com hash de senha usando bcrypt.
-- Organização inicial de um projeto full-stack.
+- Creating a server with Express.
+- Creating and organizing routes.
+- Integrating with a MySQL database.
+- Manipulating the DOM with JavaScript.
+- Consuming a custom API with `fetch`.
+- Validating data on the front end and back end.
+- Building a basic authentication flow.
+- Applying basic security with bcrypt password hashing.
+- Organizing an initial full-stack project.
 
-## Melhorias Futuras
+## Future Improvements
 
-- Implementar JWT para autenticação.
-- Usar variáveis de ambiente com `.env`.
-- Criar uma arquitetura em camadas com controllers, services e repositories.
-- Melhorar as validações de entrada.
-- Retornar mensagens de erro com status HTTP apropriados.
-- Criar scripts no `package.json`, como `start` e `dev`.
-- Fazer deploy do front-end e do back-end.
-- Adicionar testes automatizados.
-- Melhorar a interface visual.
-- Remover credenciais fixas do arquivo de conexão e usar configuração segura por ambiente.
+- Implement JWT authentication.
+- Use environment variables with `.env`.
+- Create a layered architecture with controllers, services, and repositories.
+- Improve input validation.
+- Return error messages with appropriate HTTP status codes.
+- Create `package.json` scripts such as `start` and `dev`.
+- Deploy the front end and back end.
+- Add automated tests.
+- Improve the visual interface.
+- Remove hardcoded credentials from the connection file and use secure environment-based configuration.
 
-## Autor
+## Author
 
-Desenvolvido por Guilherme Faccioli Crescencio
+Developed by Guilherme Faccioli Crescencio
 
 LinkedIn: [linkedin.com/in/guilherme-faccioli-b8a46611a](https://linkedin.com/in/guilherme-faccioli-b8a46611a)
 

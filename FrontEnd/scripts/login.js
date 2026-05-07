@@ -1,10 +1,12 @@
 const BACKEND = "http://localhost:3002";
 
+// Envia email e senha para a API validar o login.
 const logar = async () => {
   const email = document.getElementById("usuarioDigitado").value.trim();
   const senha = document.getElementById("senhaDigitada").value;
   const msg = document.getElementById("mensagemLogin");
 
+  // Evita requisicoes incompletas para o backend.
   if (!email || !senha) {
     msg.innerText = "Preencha todos os campos";
     return;
@@ -16,6 +18,7 @@ const logar = async () => {
   }
 
   try {
+    // POST /login retorna success e os dados publicos do usuario quando a senha confere.
     const res = await fetch(`${BACKEND}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -32,6 +35,7 @@ const logar = async () => {
     msg.innerText = dados.message;
 
     if (dados.success) {
+      // Guarda o usuario logado para a pagina de perfil saber quem buscar.
       localStorage.setItem("flowlogin:user", JSON.stringify(dados.user));
 
       setTimeout(() => {
@@ -44,6 +48,7 @@ const logar = async () => {
   }
 };
 
+// Evita depender de onclick inline no HTML.
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("botaoLogin").addEventListener("click", logar);
 });

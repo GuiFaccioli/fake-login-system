@@ -1,5 +1,7 @@
 const mysql = require("mysql2");
 
+// Configuracao da conexao com o banco local usado pelo projeto.
+// Em um projeto publicado, estes valores devem vir de variaveis de ambiente.
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -7,6 +9,7 @@ const connection = mysql.createConnection({
   database: "flowlogin",
 });
 
+// Testa a conexao assim que o backend inicia.
 connection.connect((err) => {
   if (err) {
     console.log("Erro na conexão:", err.message);

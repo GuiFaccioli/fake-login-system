@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS flowlogin;
 USE flowlogin;
 
--- Create usuarios table
+-- Tabela que armazena os dados usados nos fluxos de cadastro, login e perfil.
 CREATE TABLE IF NOT EXISTS usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario VARCHAR(100) NOT NULL,
